@@ -1,7 +1,7 @@
 cesium-drawhelper
 ================
 
-DrawHelper: A very early stage shape editor for Cesium. Currently limited to 2D and simple shapes.
+This project builds off the work done by [leforthomas](https://github.com/leforthomas/cesium-drawhelper), [williamscs](https://github.com/williamscs/cesium-drawhelper) and [smills](https://github.com/smills2929/cesium-drawhelper). We created an ACEs fork to add a package.json file (so we can can manage cesium-drawhelper through NPM specifically), and to keep the plugin working with versions of cesium as it is updated.
 
 Cesium version: Tested against Cesium v1.22
 

@@ -209,10 +209,10 @@ var DrawHelper = (function() {
     });
 
 //    Cesium.Polygon.prototype.setStrokeStyle = setStrokeStyle;
-//    
+//
 //    Cesium.Polygon.prototype.drawOutline = drawOutline;
 //
-    
+
     var ChangeablePrimitive = (function() {
         function _() {
         }
@@ -303,6 +303,12 @@ var DrawHelper = (function() {
                 this._outlinePolygon = this._outlinePolygon && this._outlinePolygon.destroy();
                 if(this.strokeColor && this.getOutlineGeometry) {
                     // create the highlighting frame
+                    var aliasedLineWidthRange = 1.0;
+                    if(context._aliasedLineWidthRange !== undefined){
+                        if(context._aliasedLineWidthRange.length > 1){
+                            aliasedLineWidthRange = context._aliasedLineWidthRange[1];
+                        }
+                    }
                     this._outlinePolygon = new Cesium.Primitive({
                         geometryInstances : new Cesium.GeometryInstance({
                             geometry : this.getOutlineGeometry(),
@@ -316,7 +322,7 @@ var DrawHelper = (function() {
                                 depthTest : {
                                     enabled : true
                                 },
-                                lineWidth : this.strokeWidth || 4.0
+                                lineWidth : Math.min(this.strokeWidth || 4.0, aliasedLineWidthRange)
                             }
                         })
                     });
@@ -402,7 +408,7 @@ var DrawHelper = (function() {
     })();
 
     _.PolygonPrimitive = (function() {
-    	
+
         function _(options) {
 
             options = copyOptions(options, defaultSurfaceOptions);
@@ -553,7 +559,7 @@ var DrawHelper = (function() {
     })();
 
     _.CirclePrimitive = (function() {
-    	
+
         function _(options) {
 
             if(!(Cesium.defined(options.center) && Cesium.defined(options.radius))) {
@@ -695,7 +701,7 @@ var DrawHelper = (function() {
     })();
 
     _.PolylinePrimitive = (function() {
-    	
+
         function _(options) {
 
             options = copyOptions(options, defaultPolylineOptions);
@@ -731,7 +737,7 @@ var DrawHelper = (function() {
         };
 
         _.prototype.getGeometry = function() {
-        	
+
             if (!Cesium.defined(this.positions) || this.positions.length < 2) {
                 return;
             }
@@ -744,7 +750,7 @@ var DrawHelper = (function() {
                     ellipsoid : this.ellipsoid
                 });
         }
-        
+
         return _;
     })();
 
@@ -1307,7 +1313,7 @@ var DrawHelper = (function() {
             enhanceWithListeners(billboard);
 
         };
-        
+
         function setHighlighted(highlighted) {
             var scene = drawHelper._scene;
 
@@ -1364,7 +1370,7 @@ var DrawHelper = (function() {
 
                                     if (billboard._billboardCollection)
                                         billboard.position = halfMarkerPosition;
-                                    
+
                                 }
                             }
                             // else update the half markers before and after the index
@@ -2015,7 +2021,7 @@ var DrawHelper = (function() {
 
         return to;
     }
-    
+
     function fillOptions(options, defaultOptions) {
         options = options || {};
         var option;
@@ -2068,4 +2074,3 @@ var DrawHelper = (function() {
 
     return _;
 })();
-

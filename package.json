@@ -1,0 +1,26 @@
+{
+  "name": "cesium-drawhelper",
+  "version": "0.0.1",
+  "description": "Custom drawing tool for cesium",
+  "main": "DrawHelper.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/acesinc/cesium-drawhelper.git"
+  },
+  "keywords": [
+    "cesium",
+    "drawhelper"
+  ],
+  "author": "leforthomas, williamscs, smills, ninorana02, hoganmaps",
+  "license": "Apache-2.0",
+  "bugs": {
+    "url": "https://github.com/acesinc/cesium-drawhelper/issues"
+  },
+  "dependencies": {
+    "cesium": "1.22.1"
+  },
+  "homepage": "https://github.com/acesinc/cesium-drawhelper#readme"
+}
